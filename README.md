@@ -2,6 +2,11 @@
   
 Lets you automatically login and logout to sprout and notifies you every time.  
   
+
+## Prerequisite  
+  
+* AWS Account  
+  
 ## Feature  
   
 * Slack notification on error and on success

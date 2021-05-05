@@ -1,6 +1,6 @@
 {
   "name": "sprout-auto-attendance",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Lazy attendance for lazy developers",
   "main": "serverless.ts",
   "scripts": {
