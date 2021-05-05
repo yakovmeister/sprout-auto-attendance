@@ -8,7 +8,7 @@ import { reportSuccess } from '@libs/notification/slack';
 
 const handler = async () => {
   logger.info({
-    message: 'Automatically logging you in'
+    message: 'Automatically logging you out'
   });
 
   const response = await clockOut();
