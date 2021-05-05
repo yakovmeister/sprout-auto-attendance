@@ -65,6 +65,8 @@ Update the variables to your desired schedule.
   
 Note that the scheduling is in `cron` format, you can visit the [`schedule expression page`](https://docs.aws.amazon.com/lambda/latest/dg/services-cloudwatchevents-expressions.html) to learn more.  
   
+Also note that, the timezone that you have to input in the `src/libs/timings.ts` should be in GMT, otherwise it won't run in the expected time. Refer to [`this`](http://www.timebie.com/tz/timediff.php?q1=Greenwich%20Mean%20Time&q2=GMT%20+8%20Time) table for converting the timezones.
+  
 ---
   
 ### Step 5. Installation of the dependencies  
@@ -85,8 +87,6 @@ npm run deploy
 ```
    
 That should wrap it all up.
-  
-Note that by default, the region that is being used is Singapore `ap-southeast-1`.
 
 ---
 
