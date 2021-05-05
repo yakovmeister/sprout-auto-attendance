@@ -21,6 +21,7 @@ const serverlessConfiguration: AWS = {
     region: 'ap-southeast-1',
     name: 'aws',
     runtime: 'nodejs14.x',
+    logRetentionInDays: 7,
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
