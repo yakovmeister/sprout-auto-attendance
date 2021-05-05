@@ -57,7 +57,6 @@ SPROUT_CLOCK_PASSWORD=XXXXXXXX
 SLACK_WEBHOOK_URL=https://hooks.slack.com/services/XXXXXXXX/XXXXXXX/XXXXXXXXXXXXX
 SLACK_NOTIFICATION=yes
 ```
-SPROUT_CLOCK_URL=https://XXXXXXXX.hrhub.ph/WebBundy/ClockIn
 Otherwise, if you want to disable it, you can leave it as is, without changing `SLACK_WEBHOOK_URL` and updating only the `SPROUT_CLOCK_URL`, `SPROUT_CLOCK_USERNAME` and `SPROUT_CLOCK_PASSWORD`.
   
 ---
