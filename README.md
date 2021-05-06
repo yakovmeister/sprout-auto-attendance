@@ -1,6 +1,6 @@
 # Sprout Automatic Attendance  
   
-Lets you automatically login and logout to sprout and notifies you every time.  
+Lets you automatically login and logout to sprout via WebBundy and notifies you every time.  
   
 
 ## Prerequisite  
@@ -97,8 +97,32 @@ npm run deploy
    
 That should wrap it all up.
 
----
+## Estimated Running Cost
+  
+Below are the calculation for the cost  
+  
+### Lambda
+Assume that Lambda runs twice a day for 30 days (of course this is lesser of you we remove the weekends) and runs at 600 milliseconds each time.  
 
+**total compute (seconds)** = (30 days * 2) * (0.6 seconds) = 60 * 0.6 = 36 seconds  
+**total compute (GB-s)** = (36 seconds * 1024 memory) / 1024 = 36 GB-s  
+**monthly billable** = (36 GB-s) - (400000 Free tier GB-S) = -399,964 (basically zero)  
+**total monthly charge** = -399,964 * $0.00001667 = $-6.67 (basically zero)  
+
+AWS will charge you nothing for using this service.
+
+### EventBridge  
+  
+EventBridge falls under free tier  
+  
+### CloudFormation  
+  
+CloudFormation falls under free tier  
+  
+###  CloudWatch  
+  
+CloudWatch falls under free tier  
+  
 ## License  
   
 sprout-auto-attendance is [MIT Licensed](https://github.com/yakovmeister/sprout-auto-attendance/blob/master/LICENSE).
