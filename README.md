@@ -102,7 +102,7 @@ That should wrap it all up.
 Below are the calculation for the cost  
   
 ### Lambda
-Assume that Lambda runs twice a day for 30 days (of course this is lesser of you we remove the weekends) and runs at 600 milliseconds each time.  
+Assume that Lambda runs twice a day for 30 days (of course this is lesser if we remove weekends) and runs at 600 milliseconds each time.  
 
 **total compute (seconds)** = (30 days * 2) * (0.6 seconds) = 60 * 0.6 = 36 seconds  
 **total compute (GB-s)** = (36 seconds * 1024 memory) / 1024 = 36 GB-s  
