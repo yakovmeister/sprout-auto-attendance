@@ -1,5 +1,5 @@
 import type { AWS } from '@serverless/typescript';
-
+import resources from './config/resources';
 import handlers from '@handlers/index';
 
 const serverlessConfiguration: AWS = {
@@ -15,6 +15,7 @@ const serverlessConfiguration: AWS = {
   plugins: [
     'serverless-dotenv-plugin',
     'serverless-webpack',
+    'serverless-dynamodb-local',
     'serverless-offline'
   ],
   provider: {
@@ -34,8 +35,8 @@ const serverlessConfiguration: AWS = {
     },
     lambdaHashingVersion: '20201221',
   },
-  // import the function via paths
   functions: { ...handlers },
+  resources: { ...resources }
 };
 
 module.exports = serverlessConfiguration;

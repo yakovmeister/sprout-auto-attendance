@@ -29,6 +29,39 @@ export default async function notifySlack(data: SlackWebHookPayload): Promise<Ax
   }
 }
 
+export function reportInterrupt(message: string) {
+  const formattedPayload: SlackWebHookPayload = {
+    blocks: []
+  };
+
+  formattedPayload.blocks.push({
+    type: 'header',
+    text: {
+      type: 'plain_text',
+      text: ':warning::warning::warning::warning::warning:',
+      emoji: true
+    }
+  });
+
+  formattedPayload.blocks.push({
+    type: 'section',
+    text: {
+      type: 'mrkdwn',
+      text: 'Attendance log interrupted'
+    }
+  });
+
+  formattedPayload.blocks.push({
+    type: 'section',
+    text: {
+      type: 'mrkdwn',
+      text: `*Message:* ${message}`
+    }
+  });
+
+  return notifySlack(formattedPayload);
+}
+
 export function reportSuccess(response: string) {
   const formattedPayload: SlackWebHookPayload = {
     blocks: []

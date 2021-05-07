@@ -4,12 +4,28 @@ import { clockOut } from '@handlers/scheduleLogout/clockOut.request';
 import { wrap } from '@libs/wrapper';
 import { errorResponse } from '@libs/middlewares/errorResponse.middleware';
 import { GenericError } from '@libs/errors/generic';
-import { reportSuccess } from '@libs/notification/slack';
+import { reportSuccess, reportInterrupt } from '@libs/notification/slack';
+import fetchInterrupt from '@handlers/scheduleLogin/fetchInterrupt';
+import deleteInterrupt from '@handlers/scheduleLogout/deleteInterrupt';
 
 const handler = async () => {
   logger.info({
     message: 'Automatically logging you out'
   });
+
+  const interrupt = await fetchInterrupt();
+
+  if (interrupt.date) {
+    await deleteInterrupt();
+    await reportInterrupt('Log out interrupted. If this is not intended, please manually logout');
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: 'Log out interrupted'
+      })
+    };
+  }
 
   const response = await clockOut();
 

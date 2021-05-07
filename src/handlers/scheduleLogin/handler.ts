@@ -4,12 +4,26 @@ import { clockIn } from '@handlers/scheduleLogin/clockIn.request';
 import { wrap } from '@libs/wrapper';
 import { errorResponse } from '@libs/middlewares/errorResponse.middleware';
 import { GenericError } from '@libs/errors/generic';
-import { reportSuccess } from '@libs/notification/slack';
+import { reportSuccess, reportInterrupt } from '@libs/notification/slack';
+import fetchInterrupt from '@handlers/scheduleLogin/fetchInterrupt';
 
 const handler = async () => {
   logger.info({
     message: 'Automatically logging you in'
   });
+
+  const interrupt = await fetchInterrupt();
+
+  if (interrupt.date) {
+    await reportInterrupt('Log in interrupted. If this is not intended, please manually login');
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: 'Log in interrupted'
+      })
+    };
+  }
 
   const response = await clockIn();
 
