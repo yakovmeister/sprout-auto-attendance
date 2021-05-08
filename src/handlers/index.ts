@@ -5,8 +5,10 @@ import getInterrupts from './getInterrupts';
 import postPushInterrupt from './postPushInterrupt';
 import cancelInterrupt from './cancelInterrupt';
 import getSchedules from './getSchedules';
+import me from './me';
 
 export default {
+  me,
   login,
   logout,
   getInterrupts,

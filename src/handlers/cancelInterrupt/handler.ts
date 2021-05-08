@@ -24,7 +24,7 @@ const handler = async (event: APIGatewayEvent) => {
       message: `Interrupt for ${date} is now cancelled`
     }),
     headers: {
-      'Allow-Access-Control-Origin': '*',
+      'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json'
     }
   };

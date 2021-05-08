@@ -37,7 +37,11 @@ const serverlessConfiguration: AWS = {
           'dynamodb:*'
         ],
         Resource: [
-          'arn:aws:dynamodb:::table/nananaTable'
+          /**
+           * bruh... srsly.
+           * why u no work wit arn:aws:dynamodb:::table/nananaTable ?
+           */
+          'arn:aws:dynamodb:ap-southeast-1:*:table/nananaTable'
         ]
       },
       {

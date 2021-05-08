@@ -19,7 +19,7 @@ const handler = async () => {
     statusCode: 200,
     body: JSON.stringify({ scheds }),
     headers: {
-      'Allow-Access-Control-Origin': '*',
+      'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json'
     }
   };

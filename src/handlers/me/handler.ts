@@ -2,22 +2,32 @@ import 'source-map-support/register';
 import { logger } from '@libs/logger';
 import { wrap } from '@libs/wrapper';
 import { errorResponse } from '@libs/middlewares/errorResponse.middleware';
-import fetchInterrupts from '@handlers/getInterrupts/fetchInterrupts';
+import { APIGatewayEvent } from 'aws-lambda';
 
-const handler = async () => {
+const handler = async (event: APIGatewayEvent) => {
   logger.info({
-    message: 'Getting interrupts'
+    message: 'Fetching user details'
   });
 
-  const interrupts = await fetchInterrupts();
+  const {
+    email,
+    name,
+    picture,
+    token
+  } = event.requestContext.authorizer;
 
   logger.info({
-    message: 'Interrupt fetched'
+    message: 'Returning user details'
   });
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ interrupts }),
+    body: JSON.stringify({
+      email,
+      name,
+      picture,
+      token
+    }),
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json'
