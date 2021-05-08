@@ -6,7 +6,7 @@ export default {
     {
       http: {
         method: 'get',
-        path: 'api/v1/interrupts',
+        path: 'api/v1/schedules',
         cors: {
           origin: '*'
         },

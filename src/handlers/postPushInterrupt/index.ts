@@ -6,7 +6,7 @@ export default {
     {
       http: {
         method: 'post',
-        path: 'api/v1/auth',
+        path: 'api/v1/interrupts',
         cors: {
           origin: '*'
         },

@@ -1,12 +1,12 @@
 {
   "name": "sprout-auto-attendance",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Lazy attendance for lazy developers",
   "main": "serverless.ts",
   "scripts": {
     "deploy": "./node_modules/.bin/serverless deploy --stage prod -v --conceal --color",
     "local": "./node_modules/.bin/serverless offline --stage test --httpPort 3001",
-    "test": "npm run lint && npm run coverage",
+    "test": "npm run lint",
     "mocha": "./node_modules/.bin/mocha test/**/*.test.ts",
     "lint": "./node_modules/.bin/eslint . --ext .ts --fix",
     "coverage": "nyc npm run mocha"
@@ -20,6 +20,7 @@
     "axios": "^0.21.1",
     "dayjs": "^1.10.4",
     "google-auth-library": "^7.0.4",
+    "joi": "^17.4.0",
     "source-map-support": "^0.5.19",
     "uuid": "^8.3.2",
     "winston": "^3.3.3"
@@ -31,6 +32,7 @@
     "@types/mocha": "^8.2.2",
     "@types/node": "^14.14.44",
     "@types/selenium-webdriver": "^4.0.12",
+    "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.22.1",
     "chai": "^4.3.4",

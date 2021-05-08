@@ -5,8 +5,8 @@ export default {
   events: [
     {
       http: {
-        method: 'get',
-        path: 'api/v1/interrupts',
+        method: 'delete',
+        path: 'api/v1/interrupts/{date}',
         cors: {
           origin: '*'
         },

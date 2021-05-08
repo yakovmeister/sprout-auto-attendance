@@ -6,10 +6,8 @@ import utc from 'dayjs/plugin/utc';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-const fetchInterrupt = () => {
+const deleteInterrupt = () => {
   const currentDate = +dayjs().tz('Asia/Manila').format('YYYYMMDD');
-
-  console.log(currentDate);
 
   const parameters = {
     TableName: 'nananaTable',
@@ -22,4 +20,4 @@ const fetchInterrupt = () => {
   return del(parameters);
 };
 
-export default fetchInterrupt;
+export default deleteInterrupt;

@@ -2,27 +2,25 @@ import 'source-map-support/register';
 import { logger } from '@libs/logger';
 import { wrap } from '@libs/wrapper';
 import { errorResponse } from '@libs/middlewares/errorResponse.middleware';
+import { middleware, RequestValidationParam } from '@handlers/postPushInterrupt/request.validation';
+import pushInterrupt from '@handlers/postPushInterrupt/pushInterrupt';
 import { APIGatewayEvent } from 'aws-lambda';
 
 const handler = async (event: APIGatewayEvent) => {
   logger.info({
-    message: 'Verifying authentication'
+    message: 'Adding new interrupt'
   });
 
-  const {
-    email,
-    name,
-    picture,
-    token
-  } = event.requestContext.authorizer;
+  await pushInterrupt((event.body as RequestValidationParam).date);
+
+  logger.info({
+    message: 'Interrupt added'
+  });
 
   return {
     statusCode: 200,
     body: JSON.stringify({
-      email,
-      name,
-      picture,
-      token
+      message: 'Interrupt added'
     }),
     headers: {
       'Allow-Access-Control-Origin': '*',
@@ -31,4 +29,6 @@ const handler = async (event: APIGatewayEvent) => {
   };
 };
 
-export const main = wrap(handler).use(errorResponse);
+export const main = wrap(handler)
+  .use(middleware)
+  .use(errorResponse);

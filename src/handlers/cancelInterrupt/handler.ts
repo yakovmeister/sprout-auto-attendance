@@ -2,22 +2,27 @@ import 'source-map-support/register';
 import { logger } from '@libs/logger';
 import { wrap } from '@libs/wrapper';
 import { errorResponse } from '@libs/middlewares/errorResponse.middleware';
-import fetchInterrupts from '@handlers/getInterrupts/fetchInterrupts';
+import deleteInterrupt from '@handlers/cancelInterrupt/deleteInterrupt';
+import { APIGatewayEvent } from 'aws-lambda';
 
-const handler = async () => {
+const handler = async (event: APIGatewayEvent) => {
   logger.info({
-    message: 'Getting interrupts'
+    message: 'Cancelling interrupt'
   });
 
-  const interrupts = await fetchInterrupts();
+  const date = +event.pathParameters.date;
 
+  await deleteInterrupt(date);
+  
   logger.info({
-    message: 'Interrupt fetched'
+    message: 'Interrupt cancelled'
   });
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ interrupts }),
+    body: JSON.stringify({
+      message: `Interrupt for ${date} is now cancelled`
+    }),
     headers: {
       'Allow-Access-Control-Origin': '*',
       'Content-Type': 'application/json'

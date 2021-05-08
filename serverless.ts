@@ -30,6 +30,30 @@ const serverlessConfiguration: AWS = {
         'attendancebot'
       ]
     },
+    iamRoleStatements: [
+      {
+        Effect: 'Allow',
+        Action: [
+          'dynamodb:*'
+        ],
+        Resource: [
+          'arn:aws:dynamodb:::table/nananaTable'
+        ]
+      },
+      {
+        Effect: 'Allow',
+        Action: [
+          'events:*'
+        ],
+        Resource: [
+          /**
+           * bruh... srsly.
+           * why u no work wit arn:aws:events:::rule/* ?
+           */
+          'arn:aws:events:ap-southeast-1:*:rule/*' 
+        ]
+      }
+    ],
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
     },

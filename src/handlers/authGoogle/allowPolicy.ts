@@ -1,4 +1,3 @@
-
 import { CustomAuthorizerResult } from 'aws-lambda';
 
 type Context = {
