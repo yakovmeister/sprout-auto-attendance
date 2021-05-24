@@ -6,6 +6,7 @@
   "scripts": {
     "deploy": "./node_modules/.bin/serverless deploy --stage prod -v --conceal --color",
     "local": "./node_modules/.bin/serverless offline --stage test --httpPort 3001",
+    "local:noauth": "./node_modules/.bin/serverless offline --stage test --httpPort 3001 --noAuth",
     "test": "npm run lint",
     "mocha": "./node_modules/.bin/mocha test/**/*.test.ts",
     "lint": "./node_modules/.bin/eslint . --ext .ts --fix",

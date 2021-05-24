@@ -1,4 +1,4 @@
-import { query } from '@libs/database/helpersv2';
+import { query } from '@libs/database/helpers';
 
 const fetchInterrupts = () => {
   const parameters = {

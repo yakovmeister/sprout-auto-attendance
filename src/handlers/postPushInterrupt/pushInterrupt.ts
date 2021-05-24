@@ -1,4 +1,4 @@
-import { put } from '@libs/database/helpersv2';
+import { put } from '@libs/database/helpers';
 
 const pushInterrupt = (date: number) => {
   const params = {

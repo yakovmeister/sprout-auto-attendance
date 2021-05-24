@@ -1,4 +1,4 @@
-import { del } from '@libs/database/helpersv2';
+import { del } from '@libs/database/helpers';
 
 const deleteInterrupt = (date: number) => {
   const parameters = {
