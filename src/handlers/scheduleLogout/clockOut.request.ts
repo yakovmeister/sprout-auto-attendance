@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { ApiError } from '@libs/errors/api';
+import ApiError from '@libs/errors/api';
 import qs from 'querystring';
 import { logger } from '@libs/logger';
 

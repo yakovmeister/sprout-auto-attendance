@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 import { ValidationError as JoiValidationError } from 'joi';
 
-export class ValidationError extends Error {
+export default class ValidationError extends Error {
   public name = 'Validation_Error';
   public message = 'Invalid input found';
   public id: string;

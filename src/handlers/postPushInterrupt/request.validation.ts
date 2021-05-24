@@ -1,5 +1,5 @@
 import joi from 'joi';
-import { ValidationError } from '@libs/errors/validation';
+import ValidationError from '@libs/errors/validation';
 
 export type RequestValidationParam = {
   date?: number;

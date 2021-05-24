@@ -3,7 +3,7 @@ import { logger } from '@libs/logger';
 import { clockOut } from '@handlers/scheduleLogout/clockOut.request';
 import { wrap } from '@libs/wrapper';
 import { errorResponse } from '@libs/middlewares/errorResponse.middleware';
-import { GenericError } from '@libs/errors/generic';
+import GenericError from '@libs/errors/generic';
 import { reportSuccess, reportInterrupt } from '@libs/notification/slack';
 import fetchInterrupt from '@handlers/scheduleLogin/fetchInterrupt';
 import deleteInterrupt from '@handlers/scheduleLogout/deleteInterrupt';
