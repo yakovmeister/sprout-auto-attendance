@@ -6,6 +6,9 @@ const serverlessConfiguration: AWS = {
   service: 'sprout-auto-attendance',
   frameworkVersion: '2',
   variablesResolutionMode: '20210219',
+  package: {
+    individually: true
+  },
   custom: {
     webpack: {
       webpackConfig: './webpack.config.js',
