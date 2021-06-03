@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 import { AxiosError } from 'axios';
 
-export class ApiError extends Error {
+export default class ApiError extends Error {
   public name = 'API_Connection_Error';
   public message = 'Unable to properly communicate with API';
   public id: string;

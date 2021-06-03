@@ -1,12 +1,13 @@
 {
   "name": "sprout-auto-attendance",
-  "version": "1.0.2",
+  "version": "2.2.0",
   "description": "Lazy attendance for lazy developers",
   "main": "serverless.ts",
   "scripts": {
     "deploy": "./node_modules/.bin/serverless deploy --stage prod -v --conceal --color",
-    "local": "./node_modules/.bin/serverless offline --stage test",
-    "test": "npm run lint && npm run coverage",
+    "local": "./node_modules/.bin/serverless offline --stage test --httpPort 3001",
+    "local:noauth": "./node_modules/.bin/serverless offline --stage test --httpPort 3001 --noAuth",
+    "test": "npm run lint",
     "mocha": "./node_modules/.bin/mocha test/**/*.test.ts",
     "lint": "./node_modules/.bin/eslint . --ext .ts --fix",
     "coverage": "nyc npm run mocha"
@@ -15,21 +16,28 @@
     "node": ">=14.15.0"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.16.0",
+    "@aws-sdk/lib-dynamodb": "^3.16.0",
     "@middy/core": "^1.5.2",
     "@middy/http-json-body-parser": "^1.5.2",
     "axios": "^0.21.1",
     "dayjs": "^1.10.4",
+    "google-auth-library": "^7.0.4",
+    "joi": "^17.4.0",
     "source-map-support": "^0.5.19",
     "uuid": "^8.3.2",
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@aws-sdk/client-dynamodb": "^3.16.0",
+    "@aws-sdk/lib-dynamodb": "^3.16.0",
     "@serverless/typescript": "^2.23.0",
     "@types/aws-lambda": "^8.10.71",
     "@types/chai": "^4.2.17",
     "@types/mocha": "^8.2.2",
     "@types/node": "^14.14.44",
     "@types/selenium-webdriver": "^4.0.12",
+    "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.22.1",
     "chai": "^4.3.4",
@@ -41,6 +49,7 @@
     "puppeteer": "^9.1.0",
     "serverless": "^2.39.2",
     "serverless-dotenv-plugin": "^3.9.0",
+    "serverless-dynamodb-local": "^0.2.39",
     "serverless-offline": "^7.0.0",
     "serverless-webpack": "^5.3.5",
     "ts-loader": "^8.0.15",

@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 
-export class GenericError extends Error {
+export default class GenericError extends Error {
   public name = 'API_Connection_Error';
   public message = 'Unable to properly communicate with API';
   public id: string;
